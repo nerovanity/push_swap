@@ -1,0 +1,41 @@
+CC = cc
+CFLAGS =-Wall -Wextra -Werror
+G = $(shell tput setaf 2)
+R = $(shell tput setaf 1)
+Y = $(shell tput setaf 3)
+DONE = Done
+SRCS = ./parse_args/check_is_num.c \
+       ./parse_args/fetch_args.c \
+	   ./parse_args/convert_int.c \
+       ./utils/ft_strlen.c \
+	   ./utils/ft_split.c \
+	   ./utils/args_join.c \
+	   ./utils/args_dup.c \
+	   ./utils/ft_strdup.c \
+	   ./utils/ft_atoi.c \
+	   ./utils/check_dup.c \
+       ./main.c
+OBJECTS = $(SRCS:.c=.o)
+NAME = push_swap
+
+all: $(NAME) clean
+	@echo $(G) "ALL functions are done!"
+
+$(NAME): $(OBJECTS)
+	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+
+%.o: %.c
+	@echo $(Y) Compiling: $< ... Done!
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	@echo $(R) Cleaned
+	@rm -f $(OBJECTS)
+
+fclean: clean
+	@echo $(R) Fully Cleaned
+	@rm -f $(NAME)
+
+re: fclean all
+
+.phony: clean re all fclean

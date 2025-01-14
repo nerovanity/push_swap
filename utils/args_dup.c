@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:48:51 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/12 10:52:02 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/14 10:59:08 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,24 @@ char	**args_dup(char **array)
 {
 	char	**r_array;
 	int		i;
+	size_t	len;
 
 	if (!array)
 		return (NULL);
-	i = 0;
-	r_array = malloc((count(array) + 1) * sizeof(char *));
+	len = count(array);
+	r_array = malloc((len + 1) * sizeof(char *));
 	if (!r_array)
 		return (NULL);
+	i = 0;
 	while (array[i])
 	{
 		r_array[i] = ft_strdup(array[i]);
+		if (!r_array[i])
+			return (free_array(r_array), NULL);
 		i++;
 	}
-	array[i] = NULL;
+	r_array[i] = NULL;
 	return (r_array);
 }
+
+

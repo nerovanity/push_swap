@@ -7,7 +7,16 @@ DONE = Done
 SRCS = ./parse_args/check_is_num.c \
        ./parse_args/fetch_args.c \
 	   ./parse_args/convert_int.c \
+	   ./parse_args/check_sorted.c \
+	   ./src/init_stack.c \
+	   ./src/print_stack.c \
+	   ./src/moves/sa.c \
+	   ./src/moves/sb.c \
+	   ./src/moves/ss.c \
+	   ./src/moves/pa.c \
+	   ./src/moves/pb.c \
        ./utils/ft_strlen.c \
+	   ./utils/free_stack.c \
 	   ./utils/ft_split.c \
 	   ./utils/args_join.c \
 	   ./utils/args_dup.c \

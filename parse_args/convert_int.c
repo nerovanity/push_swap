@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:40:48 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/12 15:23:11 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/15 11:30:15 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int	*convert_int(char **args)
 		i++;
 	}
 	free_array(args);
+	if (check_sorted(array, len))
+		exit(0);
 	return (array);
 }

@@ -1,47 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_dup.c                                         :+:      :+:    :+:   */
+/*   check_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 16:48:51 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/15 11:21:26 by ihamani          ###   ########.fr       */
+/*   Created: 2025/01/15 11:26:31 by ihamani           #+#    #+#             */
+/*   Updated: 2025/01/15 11:30:11 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static size_t	count(char **array)
+int	check_sorted(int *array, int size)
 {
-	size_t	len;
+	int	i;
 
-	len = 0;
-	while (array[len])
-		len++;
-	return (len);
-}
-
-char	**args_dup(char **array)
-{
-	char	**r_array;
-	int		i;
-	size_t	len;
-
-	if (!array)
-		return (NULL);
-	len = count(array);
-	r_array = malloc((len + 1) * sizeof(char *));
-	if (!r_array)
-		return (NULL);
 	i = 0;
-	while (array[i])
+	while (i < size - 1)
 	{
-		r_array[i] = ft_strdup(array[i]);
-		if (!r_array[i])
-			return (free_array(r_array), NULL);
+		if (array[i] > array[i + 1])
+			return (0);
 		i++;
 	}
-	r_array[i] = NULL;
-	return (r_array);
+	return (1);
 }

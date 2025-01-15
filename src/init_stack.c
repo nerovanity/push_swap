@@ -1,47 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_dup.c                                         :+:      :+:    :+:   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 16:48:51 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/15 11:21:26 by ihamani          ###   ########.fr       */
+/*   Created: 2025/01/15 10:43:31 by ihamani           #+#    #+#             */
+/*   Updated: 2025/01/15 11:18:27 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static size_t	count(char **array)
+t_list	*ft_lstnew(int content)
 {
-	size_t	len;
+	t_list	*new;
 
-	len = 0;
-	while (array[len])
-		len++;
-	return (len);
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->nbr = content;
+	new->next = NULL;
+	return (new);
 }
 
-char	**args_dup(char **array)
+t_list	*init_stack(int *array, int size)
 {
-	char	**r_array;
+	t_list	*stack;
+	t_list	*head;
 	int		i;
-	size_t	len;
 
-	if (!array)
-		return (NULL);
-	len = count(array);
-	r_array = malloc((len + 1) * sizeof(char *));
-	if (!r_array)
-		return (NULL);
 	i = 0;
-	while (array[i])
+	stack = ft_lstnew(array[i++]);
+	if (!stack)
+		return (NULL);
+	head = stack;
+	while (i < size)
 	{
-		r_array[i] = ft_strdup(array[i]);
-		if (!r_array[i])
-			return (free_array(r_array), NULL);
-		i++;
+		head->next = ft_lstnew(array[i++]);
+		head = head->next;
 	}
-	r_array[i] = NULL;
-	return (r_array);
+	return (stack);
 }

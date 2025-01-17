@@ -15,6 +15,12 @@ SRCS = ./parse_args/check_is_num.c \
 	   ./src/moves/ss.c \
 	   ./src/moves/pa.c \
 	   ./src/moves/pb.c \
+	   ./src/moves/ra.c \
+	   ./src/moves/rb.c \
+	   ./src/moves/rr.c \
+	   ./src/moves/rra.c \
+	   ./src/moves/rrb.c \
+	   ./src/moves/rrr.c \
        ./utils/ft_strlen.c \
 	   ./utils/free_stack.c \
 	   ./utils/ft_split.c \

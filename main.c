@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:00 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/15 13:42:45 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/17 11:37:35 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ int	main(int ac, char **av)
 	stack_a = parse_stack(ac, av);
 	if (!stack_a)
 		p_error();
-	stack_b = ft_lstnew(2);
-	pb(&stack_a, &stack_b);
+	stack_b = ft_lstnew(3);
+	ra(&stack_a);
+	pa(&stack_a, &stack_b);
+	ra(&stack_a);
 	print_stack(stack_a);
 	write(1, "stack b\n", 9);
 	print_stack(stack_b);
 	free_stack(&stack_a);
-	free_stack(&stack_b);
 }

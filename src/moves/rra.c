@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   rra.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 12:57:26 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/17 11:34:56 by ihamani          ###   ########.fr       */
+/*   Created: 2025/01/17 11:23:30 by ihamani           #+#    #+#             */
+/*   Updated: 2025/01/17 11:31:44 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-void	sa(t_list **stack)
+void	rra(t_list **stack_a)
 {
 	t_list	*head;
+	t_list	*tmp;
 
-	if (stack == NULL || *stack == NULL)
+	if (*stack_a == NULL || stack_a == NULL)
 		return ;
-	if (!(*stack)->next)
+	if (!(*stack_a)->next)
 		return ;
-	head = *stack;
-	*stack = (*stack)->next;
-	head->next = (*stack)->next;
-	(*stack)->next = head;
-	write(1, "sa\n", 3);
+	head = *stack_a;
+	while (head->next->next)
+		head = head->next;
+	tmp = head->next;
+	head->next = NULL;
+	tmp->next = *stack_a;
+	*stack_a = tmp;
+	write(1, "rra\n", 4);
 }

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 12:57:26 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/17 11:34:56 by ihamani          ###   ########.fr       */
+/*   Created: 2025/01/17 11:27:50 by ihamani           #+#    #+#             */
+/*   Updated: 2025/01/17 11:31:37 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-void	sa(t_list **stack)
+void	rrb(t_list **stack_b)
 {
 	t_list	*head;
+	t_list	*tmp;
 
-	if (stack == NULL || *stack == NULL)
+	if (*stack_b == NULL || stack_b == NULL)
 		return ;
-	if (!(*stack)->next)
+	if (!(*stack_b)->next)
 		return ;
-	head = *stack;
-	*stack = (*stack)->next;
-	head->next = (*stack)->next;
-	(*stack)->next = head;
-	write(1, "sa\n", 3);
+	head = *stack_b;
+	while (head->next->next)
+		head = head->next;
+	tmp = head->next;
+	head->next = NULL;
+	tmp->next = *stack_b;
+	*stack_b = tmp;
+	write(1, "rrb\n", 4);
 }

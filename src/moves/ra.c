@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 12:57:26 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/17 11:34:56 by ihamani          ###   ########.fr       */
+/*   Created: 2025/01/17 11:03:28 by ihamani           #+#    #+#             */
+/*   Updated: 2025/01/17 11:20:46 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-void	sa(t_list **stack)
+void	ra(t_list **stack_a)
 {
 	t_list	*head;
+	t_list	*top;
 
-	if (stack == NULL || *stack == NULL)
+	if (stack_a == NULL || *stack_a == NULL)
 		return ;
-	if (!(*stack)->next)
+	if (!(*stack_a)->next)
 		return ;
-	head = *stack;
-	*stack = (*stack)->next;
-	head->next = (*stack)->next;
-	(*stack)->next = head;
-	write(1, "sa\n", 3);
+	head = *stack_a;
+	top = *stack_a;
+	*stack_a = (*stack_a)->next;
+	while (head->next)
+		head = head->next;
+	head->next = top;
+	top->next = NULL;
+	write(1, "ra\n", 3);
 }

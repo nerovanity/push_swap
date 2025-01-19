@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 10:43:31 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/19 12:01:07 by ihamani          ###   ########.fr       */
+/*   Created: 2025/01/19 13:45:31 by ihamani           #+#    #+#             */
+/*   Updated: 2025/01/19 13:45:58 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*ft_lstnew(int content)
+int	ft_min(t_list **stack_a)
 {
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->nbr = content;
-	new->next = NULL;
-	return (new);
-}
-
-t_list	*init_stack(int *array, int size)
-{
-	t_list	*stack;
+	int		min;
 	t_list	*head;
-	int		i;
 
-	i = 0;
-	stack = ft_lstnew(array[i++]);
-	if (!stack)
-		return (NULL);
-	head = stack;
-	while (i < size)
+	head = *stack_a;
+	min = (head->nbr);
+	head = head->next;
+	while (head)
 	{
-		head->next = ft_lstnew(array[i++]);
+		if (head->nbr < min)
+			min = head->nbr;
 		head = head->next;
 	}
-	return (stack);
+	return (min);
 }

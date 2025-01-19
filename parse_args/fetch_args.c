@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:15 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/12 16:17:34 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/19 11:28:09 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	**fetch_args(int ac, char **av)
 	char	**tmp_split;
 
 	i = 1;
+	if (ac == 2)
+		p_error();
 	if (!check_is_num(ac, av))
 		p_error();
 	args = NULL;

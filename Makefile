@@ -21,6 +21,8 @@ SRCS = ./parse_args/check_is_num.c \
 	   ./src/moves/rra.c \
 	   ./src/moves/rrb.c \
 	   ./src/moves/rrr.c \
+	   ./src/sort/sort4.c \
+	   ./src/sort/tiny_sort.c \
        ./utils/ft_strlen.c \
 	   ./utils/free_stack.c \
 	   ./utils/ft_split.c \
@@ -29,11 +31,13 @@ SRCS = ./parse_args/check_is_num.c \
 	   ./utils/ft_strdup.c \
 	   ./utils/ft_atoi.c \
 	   ./utils/check_dup.c \
+	   ./utils/ft_max.c \
+	   ./utils/ft_min.c \
        ./main.c
 OBJECTS = $(SRCS:.c=.o)
 NAME = push_swap
 
-all: $(NAME) clean
+all: $(NAME)
 	@echo $(G) "ALL functions are done!"
 
 $(NAME): $(OBJECTS)
@@ -53,5 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.phony: clean re all fclean
-
+.PHONY: clean re all fclean

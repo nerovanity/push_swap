@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:00 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/19 13:45:52 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:54:07 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,34 @@ t_list	*parse_stack(int ac, char **av)
 	return (stack);
 }
 
+int	ft_lstsize(t_list *lst)
+{
+	t_list	*head;
+	int		len;
+
+	len = 0;
+	head = lst;
+	while (head)
+	{
+		head = head->next;
+		len++;
+	}
+	return (len);
+}
+
+void	sort(t_list **stack_a, t_list **stack_b)
+{
+	int	len;
+
+	len = ft_lstsize(*stack_a);
+	if (len < 3)
+		tiny_sort(stack_a);
+	else if (len == 4)
+		sort4(stack_a, stack_b);
+	else if (len == 5)
+		sort5(stack_a, stack_b);
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
@@ -43,7 +71,7 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	if (!stack_a)
 		p_error();
-	sort4(&stack_a, &stack_b);
+	sort(&stack_a, &stack_b);
 	print_stack(stack_a);
 	write(1, "stack b\n", 9);
 	if (stack_b)

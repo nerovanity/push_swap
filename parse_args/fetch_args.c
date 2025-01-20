@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:15 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/19 11:28:09 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:49:22 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	free_array(char	**tmp)
 	free(tmp);
 }
 
-void	check_arg(char *str)
+void	check_empty_arg(char *str)
 {
 	int	i;
 
@@ -64,7 +64,7 @@ char	**fetch_args(int ac, char **av)
 	while (i < ac)
 	{
 		tmp = args;
-		check_arg(av[i]);
+		check_empty_arg(av[i]);
 		tmp_split = ft_split(av[i], ' ');
 		args = args_join(args, tmp_split);
 		if (tmp)

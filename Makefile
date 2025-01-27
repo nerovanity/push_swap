@@ -25,6 +25,8 @@ SRCS = ./parse_args/check_is_num.c \
 	   ./src/sort/tiny_sort.c \
 	   ./src/sort/sort4.c \
 	   ./src/sort/sort5.c \
+	   ./src/sort/sort100.c \
+	   ./src/sort/sort500.c \
        ./utils/ft_strlen.c \
 	   ./utils/free_stack.c \
 	   ./utils/ft_split.c \

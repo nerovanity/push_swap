@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:00 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/27 12:51:00 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:39:17 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	sort(t_list **stack_a, t_list **stack_b)
 		sort4(stack_a, stack_b);
 	else if (len == 5)
 		sort5(stack_a, stack_b);
+	else if (len > 5 && len <= 100)
+		sort100(stack_a, stack_b, len);
+	else if (len > 100 && len <= 500)
+		sort500(stack_a, stack_b, len);
 }
 
 int	main(int ac, char **av)

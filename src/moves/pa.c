@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:16:50 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/17 11:16:02 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/27 14:59:11 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	t_list	*head_b;
 	t_list	*head_a;
 
-	if (*stack_b == NULL || stack_b == NULL
-		|| *stack_a == NULL || stack_a == NULL)
+	if (*stack_b == NULL || stack_b == NULL)
 		return ;
 	head_b = *stack_b;
 	*stack_b = (*stack_b)->next;

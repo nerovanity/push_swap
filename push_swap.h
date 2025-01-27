@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:03 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/19 13:49:56 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/27 10:35:02 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void	tiny_sort(t_list **stack_a);
 int		ft_max(t_list **stack_a);
 int		ft_min(t_list **stack_a);
 void	sort5(t_list **stack_a, t_list **stack_b);
+void	index_stack(t_list **stack_a, int *array, int size);
 
 #endif

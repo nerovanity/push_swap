@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:00 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/20 15:54:07 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/27 12:51:00 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_list	*parse_stack(int ac, char **av)
 	t_list	*stack;
 
 	if (ac < 2)
-		return (NULL);
+		exit(0);
 	len = 0;
 	args = fetch_args(ac, av);
 	while (args[len])
@@ -28,7 +28,6 @@ t_list	*parse_stack(int ac, char **av)
 		len++;
 	}
 	array = convert_int(args);
-	printf("_________________Stack_____________\n");
 	stack = init_stack(array, len);
 	free(array);
 	return (stack);
@@ -54,7 +53,7 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	int	len;
 
 	len = ft_lstsize(*stack_a);
-	if (len < 3)
+	if (len <= 3)
 		tiny_sort(stack_a);
 	else if (len == 4)
 		sort4(stack_a, stack_b);
@@ -72,9 +71,5 @@ int	main(int ac, char **av)
 	if (!stack_a)
 		p_error();
 	sort(&stack_a, &stack_b);
-	print_stack(stack_a);
-	write(1, "stack b\n", 9);
-	if (stack_b)
-		print_stack(stack_b);
 	free_stack(&stack_a);
 }

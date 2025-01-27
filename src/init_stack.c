@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:43:31 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/19 12:01:07 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/27 10:35:08 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ t_list	*init_stack(int *array, int size)
 		head->next = ft_lstnew(array[i++]);
 		head = head->next;
 	}
+	index_stack(&stack, array, size);
 	return (stack);
 }

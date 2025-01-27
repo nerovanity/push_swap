@@ -10,6 +10,7 @@ SRCS = ./parse_args/check_is_num.c \
 	   ./parse_args/check_sorted.c \
 	   ./src/init_stack.c \
 	   ./src/print_stack.c \
+	   ./src/index.c \
 	   ./src/moves/sa.c \
 	   ./src/moves/sb.c \
 	   ./src/moves/ss.c \

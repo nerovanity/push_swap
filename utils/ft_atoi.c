@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:46:09 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/25 11:19:49 by nero             ###   ########.fr       */
+/*   Updated: 2025/01/27 10:10:00 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ static void	check_num(long long r, int *array, char **args)
 		p_error();
 	}
 }
+
 static void	over(int len, int *array, char **args)
 {
 	if (len > 12)
 	{
 		free(array);
 		free_array(args);
-		p_error();	
+		p_error();
 	}
 }
 

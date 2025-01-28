@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_stack.c                                      :+:      :+:    :+:   */
+/*   free_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 11:06:03 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/27 10:36:50 by ihamani          ###   ########.fr       */
+/*   Created: 2025/01/15 11:38:48 by ihamani           #+#    #+#             */
+/*   Updated: 2025/01/28 10:44:13 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	print_stack(t_list *head)
+void	free_stack(t_list **stack)
 {
-	if (head == NULL)
+	t_list	*head;
+	t_list	*nt;
+
+	if (stack == NULL || *stack == NULL)
 		return ;
+	head = *stack;
 	while (head)
 	{
-		printf("Number : %d | Index: %d\n", head->nbr, head->index);
-		head = head->next;
+		nt = head->next;
+		head->nbr = 0;
+		free(head);
+		head = nt;
 	}
+	*stack = NULL;
 }

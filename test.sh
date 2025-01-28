@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Function to generate permutations for small sets or random numbers for larger sets
 generate_numbers() {
     local count=$1
     if [ "$count" -le 5 ]; then
@@ -16,12 +15,10 @@ generate_numbers() {
 PUSH_SWAP=./push_swap
 CHECKER=./checker
 
-# Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Ask the user for the number of elements
 echo "Select the number of elements to test (3, 4, 5, 100, 500):"
 read count
 
@@ -31,7 +28,6 @@ if [ "$count" -eq 100 ] || [ "$count" -eq 500 ]; then
 fi
 
 
-# Function to run tests
 run_tests() {
     local count=$1
     local tests=$2
@@ -41,34 +37,26 @@ run_tests() {
         echo "Test $i for $count numbers"
         numbers=$(generate_numbers $count)
 
-        # Convert numbers string to array if small set of permutations or keep as single string for larger sets
         if [ "$count" -le 5 ]; then
             IFS=' ' read -r -a number_array <<< "$numbers"
         else
             number_array=("$numbers")
         fi
 
-        # Loop through each permutation or test the single random set
         for permutation in "${number_array[@]}"; do
-            # Replace ":" with " " to get the correct format
             perm=$(echo $permutation | tr ':' ' ')
             
-            # Skip the sorted case for small sets
             if [ "$count" -le 5 ] && [ "$perm" == "$(seq -s ' ' 1 $count)" ]; then
                 continue
             fi
             
-            # Print the current permutation
             echo "Testing permutation: $perm"
             
-            # Run push_swap and capture the output
             moves=$($PUSH_SWAP $perm)
             Number=$(echo "$moves" | wc -l)
             
-            # Pipe the result into checker
             result=$(echo "$moves" | $CHECKER $perm)
 
-            # Check the result from checker
             if [ "$result" == "OK" ]; then
                 echo -e "Permutation: $perm - Moves: $Number - ${GREEN}OK${NC}"
             else
@@ -76,7 +64,6 @@ run_tests() {
                 all_passed=false
             fi
             
-            # Check for memory leaks using valgrind
             valgrind_output=$(valgrind --leak-check=full --error-exitcode=1 $PUSH_SWAP $perm 2>&1)
             if echo "$valgrind_output" | grep -q "All heap blocks were freed -- no leaks are possible"; then
                 echo -e "${GREEN}No Leaks${NC}"
@@ -85,7 +72,6 @@ run_tests() {
                 all_passed=false
             fi
 
-            # Check if number of moves is within the specified limit
             if [ "$count" -eq 3 ] && [ "$Number" -gt 3 ]; then
                 echo -e "${RED}KO${NC} - More than 3 moves for 3 numbers"
                 all_passed=false
@@ -109,7 +95,6 @@ run_tests() {
     fi
 }
 
-# Run tests based on the count of numbers
 if [ "$count" -le 5 ]; then
     run_tests $count 1
 elif [ "$count" -eq 100 ] || [ "$count" -eq 500 ]; then

@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:15 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/27 10:10:14 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/30 10:14:29 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 void	p_error(void)
 {
-	const char	*red;
-	const char	*reset;
 	const char	*error_message;
 
-	red = "\033[31m";
-	reset = "\033[0m";
 	error_message = "Error\n";
-	write(2, red, 5);
 	write(2, error_message, 6);
-	write(2, reset, 4);
 	exit(1);
 }
 
@@ -37,7 +31,7 @@ void	free_array(char	**tmp)
 	free(tmp);
 }
 
-void	check_empty_arg(char *str)
+void	check_empty_arg(char *str, char **args)
 {
 	int	i;
 
@@ -45,7 +39,11 @@ void	check_empty_arg(char *str)
 	while (str[i] == ' ')
 		i++;
 	if (!str[i])
+	{
+		if (args)
+			free_array(args);
 		p_error();
+	}
 }
 
 char	**fetch_args(int ac, char **av)
@@ -62,7 +60,7 @@ char	**fetch_args(int ac, char **av)
 	while (i < ac)
 	{
 		tmp = args;
-		check_empty_arg(av[i]);
+		check_empty_arg(av[i], args);
 		tmp_split = ft_split(av[i], ' ');
 		args = args_join(args, tmp_split);
 		if (tmp)

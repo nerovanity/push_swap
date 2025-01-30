@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:03 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/28 11:26:04 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:51:04 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 int		check_stack_sort(t_list **stack_a, int len);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_lstsize(t_list *lst);
+void	check_moves(char **args, char *str, t_list **stack_a, t_list **stack_b);
+void	read_moves(char **args, t_list **stack_a, t_list **stack_b);
+char	**args_join_moves(char **array1, char **array2);
 
 #endif

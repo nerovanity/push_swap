@@ -3,7 +3,6 @@ CFLAGS =-Wall -Wextra -Werror
 G = $(shell tput setaf 2)
 R = $(shell tput setaf 1)
 Y = $(shell tput setaf 3)
-DONE = Done
 SRCS = ./Mandatory/parse_args/check_is_num.c \
        ./Mandatory/parse_args/fetch_args.c \
 	   ./Mandatory/parse_args/convert_int.c \
@@ -40,9 +39,9 @@ SRCS = ./Mandatory/parse_args/check_is_num.c \
 BON =	./Bonus/parse_args/check_is_num.c \
        ./Bonus/parse_args/fetch_args.c \
 	   ./Bonus/parse_args/convert_int.c \
-	   ./Bonus/parse_args/check_sorted.c \
 	   ./Bonus/src/init_stack.c \
 	   ./Bonus/src/check_stack_sort.c \
+	   ./Bonus/src/read_moves.c \
 	   ./Bonus/src/moves/sa.c \
 	   ./Bonus/src/moves/sb.c \
 	   ./Bonus/src/moves/ss.c \
@@ -101,4 +100,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean re all fclean
+.PHONY: clean re all fclean bonus

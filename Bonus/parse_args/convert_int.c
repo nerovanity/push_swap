@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:40:48 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/28 10:48:21 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:57:16 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@ static size_t	arraylen(char **args)
 	while (args[len])
 		len++;
 	return (len);
-}
-
-void	is_sorted(int *array)
-{
-	free(array);
-	exit(0);
 }
 
 int	*convert_int(char **args)
@@ -50,7 +44,5 @@ int	*convert_int(char **args)
 		i++;
 	}
 	free_array(args);
-	if (check_sorted(array, len))
-		is_sorted(array);
 	return (array);
 }

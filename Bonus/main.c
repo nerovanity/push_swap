@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:00 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/28 11:52:00 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/28 15:05:33 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,49 +48,35 @@ int	ft_lstsize(t_list *lst)
 	return (len);
 }
 
-static	void	wrong_move(char *str, t_list **stack_a, t_list **stack_b)
+void	pop_moves(t_list **stack_a, t_list **stack_b)
 {
-	free(str);
-	str = get_next_line(-1);
-	free(str);
-	free_stack(stack_b);
-	free_stack(stack_a);
-	p_error();
-}
+	char	**args;
+	char	**tmp;
+	char	*str;
 
-static void	read_moves(char *str, t_list **stack_a, t_list **stack_b)
-{
-	if (ft_strcmp(str, "sa\n") == 0)
-		sa(stack_a);
-	else if (ft_strcmp(str, "sb\n") == 0)
-		sb(stack_b);
-	else if (ft_strcmp(str, "ss\n") == 0)
-		ss(stack_a, stack_b);
-	else if (ft_strcmp(str, "pa\n") == 0)
-		pa(stack_a, stack_b);
-	else if (ft_strcmp(str, "pb\n") == 0)
-		pb(stack_a, stack_b);
-	else if (ft_strcmp(str, "ra\n") == 0)
-		ra(stack_a);
-	else if (ft_strcmp(str, "rb\n") == 0)
-		rb(stack_b);
-	else if (ft_strcmp(str, "rr\n") == 0)
-		rr(stack_a, stack_b);
-	else if (ft_strcmp(str, "rra\n") == 0)
-		rra(stack_a);
-	else if (ft_strcmp(str, "rrb\n") == 0)
-		rrb(stack_b);
-	else if (ft_strcmp(str, "rrr\n") == 0)
-		rrr(stack_a, stack_b);
-	else
-		wrong_move(str, stack_a, stack_b);
+	args = NULL;
+	str = get_next_line(0);
+	while (str != NULL)
+	{
+		check_moves(args, str, stack_a, stack_b);
+		tmp = args;
+		args = args_join_moves(args, &str);
+		free(str);
+		str = get_next_line(0);
+		if (tmp)
+			free_array(tmp);
+	}
+	if (args)
+	{
+		read_moves(args, stack_a, stack_b);
+		free_array(args);
+	}
 }
 
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	char	*str;
 	int		len;
 
 	stack_a = parse_stack(ac, av);
@@ -98,18 +84,11 @@ int	main(int ac, char **av)
 	if (!stack_a)
 		p_error();
 	len = ft_lstsize(stack_a);
-	str = get_next_line(0);
-	while (str != NULL)
-	{
-		read_moves(str, &stack_a, &stack_b);
-		free(str);
-		str = get_next_line(0);
-	}
+	pop_moves(&stack_a, &stack_b);
 	if (check_stack_sort(&stack_a, len))
 		write(1, "OK\n", 3);
 	else if (!check_stack_sort(&stack_a, len))
 		write(1, "KO\n", 3);
-	free(str);
 	free_stack(&stack_b);
 	free_stack(&stack_a);
 }

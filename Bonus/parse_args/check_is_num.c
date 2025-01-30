@@ -27,7 +27,7 @@ static int	is_num_in(char *str, size_t len)
 	return (1);
 }
 
-static int	check_sign(char *str, size_t len)
+static	int	check_sign(char *str, size_t len)
 {
 	size_t	i;
 
@@ -36,7 +36,7 @@ static int	check_sign(char *str, size_t len)
 	{
 		if (str[i] == '+' || str[i] == '-')
 		{
-			if (!(str[i + 1] && (str[i + 1] >= '0' && str[i + 1] <= '9')))
+			if (i > 0 || !str[i + 1])
 				return (0);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:23:08 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/27 15:14:24 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/30 10:45:50 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	sort100(t_list **stack_a, t_list **stack_b, int size)
 
 	i = 0;
 	j = 15;
-	(void)size;
 	while (*stack_a)
 	{
 		if ((*stack_a)->index <= i)

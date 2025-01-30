@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:20:03 by ihamani           #+#    #+#             */
-/*   Updated: 2025/01/28 11:25:44 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/01/30 10:43:35 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void	sort5(t_list **stack_a, t_list **stack_b);
 void	sort100(t_list **stack_a, t_list **stack_b, int size);
 void	sort500(t_list **stack_a, t_list **stack_b, int size);
 void	index_stack(t_list **stack_a, int *array, int size);
+int		ft_lstsize(t_list *lst);
 
 #endif

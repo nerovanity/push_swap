@@ -36,7 +36,7 @@ static	int	check_sign(char *str, size_t len)
 	{
 		if (str[i] == '+' || str[i] == '-')
 		{
-			if (i > 0 || !str[i + 1])
+			if ((i > 0 && str[i - 1] != ' ' ) || !str[i + 1])
 				return (0);
 		}
 		i++;
